@@ -10,6 +10,7 @@ import TacheCard from "../components/TacheCard.vue";
 const taches = ref([...obtenirTaches()]);
 const recherche = ref("");
 const filtreStatut = ref("Tous");
+const message = ref("");
 
 function actualiserTaches() {
   taches.value = [...obtenirTaches()];
@@ -18,11 +19,25 @@ function actualiserTaches() {
 function marquerTerminee(id) {
   terminerTache(id);
   actualiserTaches();
+
+  message.value = "✅ La tâche a été marquée comme terminée.";
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
 }
 
 function supprimer(id) {
   supprimerTache(id);
   actualiserTaches();
+
+  message.value = "✅ La tâche a été supprimée avec succès.";
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
 }
 
 const tachesFiltrees = computed(() => {
@@ -50,6 +65,10 @@ const tachesFiltrees = computed(() => {
     <h1>Liste des tâches</h1>
 
     <p>Consultez et gérez toutes vos tâches ici.</p>
+
+    <p v-if="message" class="message-succes">
+      {{ message }}
+    </p>
 
     <div class="recherche">
       <label for="recherche">Rechercher une tâche</label>

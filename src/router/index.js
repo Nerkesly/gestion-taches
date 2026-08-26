@@ -3,6 +3,7 @@ import { createRouter, createWebHashHistory } from "vue-router";
 import AccueilView from "../views/AccueilView.vue";
 import TachesView from "../views/TachesView.vue";
 import NouvelleTacheView from "../views/NouvelleTacheView.vue";
+import TacheDetailView from "../views/TacheDetailView.vue";
 
 const routes = [
   {
@@ -19,6 +20,11 @@ const routes = [
     path: "/taches/nouvelle",
     name: "nouvelle-tache",
     component: NouvelleTacheView,
+  },
+  {
+    path: "/taches/:id",
+    name: "detail-tache",
+    component: TacheDetailView,
   },
 ];
 

@@ -30,6 +30,12 @@ const emit = defineEmits(["terminer", "supprimer"]);
       {{ tache.dateEcheance }}
     </p>
 
+    <RouterLink :to="`/taches/${tache.id}`">
+      Voir les détails
+    </RouterLink>
+
+    <br />
+
     <button
       v-if="tache.statut !== 'Terminée'"
       type="button"
